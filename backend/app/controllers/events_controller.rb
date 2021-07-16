@@ -15,5 +15,11 @@ class EventsController < ApplicationController
     else
       render json: event.errors, status: 422
     end
+  end
 
+  private
+
+  def event_params
+    params.require(:event).permit(:id, :name, :start, :end, :timed, :description, :color)
+  end
 end
