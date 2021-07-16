@@ -26,6 +26,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    event = Event.find(params[:id])
+    event.destroy!
+    #destroy!にすることにより削除に失敗した時例外が発生する
+    render json: event
+  end
+
   private
 
   def event_params
